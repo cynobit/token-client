@@ -23,9 +23,9 @@ class TokenClient
    * @date  2020-03-05
    * @param [type]     $params [description]
    */
-  function __construct(array $params=null)
+  function __construct(?array $params=null)
   {
-    if ($params != null) {
+    if ($params) {
       $this->baseURL = $params['base_url'] ?? $this->baseURL;
     }
   }
