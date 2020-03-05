@@ -1,0 +1,21 @@
+{
+  "name": "cynobit/token-client",
+  "type": "library",
+  "description": "Client for the Token Server.",
+  "tags": [],
+  "page": "https://cynobit.com",
+  "authors": [
+    {
+      "name": "Francis Ilechukwu",
+      "email": "francis.ilechukwu@cynobit.com",
+      "page": "francis94c.github.io",
+      "role": "Senior Software Engineer"
+    }
+  ],
+  "php": ">=7.3",
+  "autoload": {
+    "libraries" : [
+      ["TokenClient", "@tclient", "tclient"]
+    ]
+  }
+}
