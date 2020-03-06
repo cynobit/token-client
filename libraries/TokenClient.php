@@ -16,7 +16,13 @@ class TokenClient
    * [private description]
    * @var [type]
    */
-  private $lastStatusCode;
+  private $lastResponseCode;
+
+  /**
+   * [private description]
+   * @var [type]
+   */
+  private $lastResponse;
 
   /**
    * [__construct description]
@@ -49,7 +55,10 @@ class TokenClient
         'provider'      => $provider
       ]
     );
-    $this->lastStatusCode = $code;
+
+    $this->lastResponseCode = $code;
+    $this->lastResponse = $response;
+
     return $code == 204;
   }
 
@@ -64,16 +73,30 @@ class TokenClient
     list($code, $response) = (new TokenCURL(TokenCURL::GET))(
       $this->baseURL."token/$id/$provider"
     );
-    $this->lastStatusCode = $code;
+
+    $this->lastResponseCode = $code;
+    $this->lastResponse = $response;
+
     if ($code == 200) return json_decode($response)->access_token;
+
     return null;
   }
 
   /**
-   * [getLastStatusCode description]
+   * [getLastResponseCode description]
    * @return int [description]
    */
-  public function getLastStatusCode():int {
-    return $this->lastStatusCode;
+  public function getLastResponseCode():int {
+    return $this->lastResponseCode;
+  }
+
+  /**
+   * [getLastResponse description]
+   * @date   2020-03-06
+   * @return string     [description]
+   */
+  public function getLastResponse():string
+  {
+    return $this->lastResponse;
   }
 }
