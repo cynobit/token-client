@@ -55,9 +55,7 @@ class TokenCURL
     // Defaults.
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-    if (ENVIRONMENT == 'development') {
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    }
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
     // Header.
     $header = [
